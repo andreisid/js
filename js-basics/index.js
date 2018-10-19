@@ -27,3 +27,5 @@ function Circle(radius) {
 
 c2 = new Circle(3);
 console.log(c2);
+
+let x = {};
