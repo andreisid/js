@@ -6,7 +6,7 @@ let nb = 0.3;
 
 //Factory function
 function createCircle(radius) {
-  c = {
+  let c = {
     radius,
     draw: function() {
       console.log("draw");
@@ -53,7 +53,7 @@ sir = [1, 2, 3, 4, 5, 6, 7];
 sir1 = sir.filter(n => {
   if (n % 2 == 1) return n;
 });
-)//console.log(sir1);
+//console.log(sir1);
 
 sir2 = sir.map(n => {
   return "<li>" + n + "</li>";
@@ -83,7 +83,52 @@ const walk = person.walk.bind(person);
 walk();
 
 //spread
-console.log(sir);
-console.log(sir1);
-console.log(sir.concat(sir1));
-console.log([...sir1,...sir]);
+//console.log(sir);
+//console.log(sir1);
+//console.log(sir.concat(sir1));
+//console.log([...sir1,...sir]);
+
+//object destructoring
+man = {
+  name: "ion",
+  age: 28,
+  address: "uk"
+};
+
+const { name, age, address } = man;
+console.log(name, age, address);
+const { name: n } = man;
+console.log(n);
+
+//spread operator
+const first = { name: "john" };
+const second = { job: "writer" };
+
+const combined = { ...first, ...second, location: "uk" };
+console.log(combined);
+
+class Pers {
+  constructor(name) {
+    this.name = name;
+  }
+  walk() {
+    console.log("walk");
+  }
+}
+
+p1 = new Pers("ion");
+console.log(p1);
+p1.walk();
+
+class Teacher extends Pers {
+  constructor(name, degree) {
+    super(name);
+    this.degree = degree;
+  }
+  teach() {
+    console.log("teaching ..");
+  }
+}
+
+t1 = new Teacher("A", "b");
+console.log(t1);
