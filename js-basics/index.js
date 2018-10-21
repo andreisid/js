@@ -53,14 +53,37 @@ sir = [1, 2, 3, 4, 5, 6, 7];
 sir1 = sir.filter(n => {
   if (n % 2 == 1) return n;
 });
-console.log(sir1);
+)//console.log(sir1);
 
 sir2 = sir.map(n => {
   return "<li>" + n + "</li>";
 });
 
-console.log(sir2);
+//console.log(sir2);
 
 sir3 = sir.map(n => "<li>" + n + "</li>");
 
-console.log(sir3);
+//console.log(sir3);
+
+sir4 = sir.reduce((sum, elem) => {
+  return sum + elem;
+}, 0);
+//console.log(sir4);
+
+const person = {
+  name: "andy",
+  walk() {
+    console.log(this);
+  }
+};
+
+//bind
+person.walk();
+const walk = person.walk.bind(person);
+walk();
+
+//spread
+console.log(sir);
+console.log(sir1);
+console.log(sir.concat(sir1));
+console.log([...sir1,...sir]);
