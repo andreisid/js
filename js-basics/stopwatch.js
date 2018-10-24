@@ -49,3 +49,14 @@ sw.stop();
 console.log(sw.duration);
 sw.reset();
 console.log(sw.duration);
+
+console.log("-------");
+sw.start();
+console.log(sw.duration);
+setTimeout(() => {
+  sw.stop();
+  console.log(sw.duration);
+}, 3000);
+
+//sw.reset();
+console.log(sw.duration);
