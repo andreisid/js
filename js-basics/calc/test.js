@@ -1,6 +1,6 @@
 //https://www.taniarascia.com/unit-testing-in-javascript/
-// npm install -g mocha 
-// npm test 
+// npm install -g mocha
+// npm test
 
 const assert = require("assert");
 const operation = require("./operations.js");
@@ -24,3 +24,4 @@ it("correctly calculates substract of 3 and 1", () => {
 it("correctly calculates substract of 10 and 5", () => {
   assert.equal(operation.sub(10, 5), 5);
 });
+hey
