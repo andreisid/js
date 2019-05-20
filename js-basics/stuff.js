@@ -16,8 +16,12 @@ const promise3 = new Promise((resolve, reject) =>
 // Promise.all([promise1, promise2, promise3]).then(values =>
 //   setTimeout(console.log(values))
 // );
-async function fetchAsync() {
-  const promise4 = await fetch("https://jsonplaceholder.typicode.com/posts");
-  console.log(promise4.json());
+async function fetchAsync(category) {
+  const promise4 = await fetch(
+    `https://jsonplaceholder.typicode.com/${category}`
+  ).then(res => res.json());
+  //console.log(promise4.json());
+  return promise4;
 }
-fetchAsync();
+fetchAsync("photos").then(res => console.log(res));
+fetchAsync("posts").then(res => console.log(res));
