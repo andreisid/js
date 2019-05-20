@@ -1,9 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
+import React from "react";
+import ReactDOM from "react-dom";
+//import App from "./App";
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
+const tasks = ["aaa", "bbb", "ccc"];
+
+const element = (
+  <ol>
+    {tasks.map((e, i) => (
+      <li key={i}>{e}</li>
+    ))}
+  </ol>
 );
+
+ReactDOM.render(element, document.getElementById("root"));
+// ReactDOM.render(
+//   <App />,
+//   document.getElementById('root')
+// );
