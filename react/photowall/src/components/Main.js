@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Title from "./Title";
 import Photowall from "./PhotoWall";
+import AddPhoto from "./AddPhoto";
 
 function getRandomPic() {
   const rand = Math.floor(Math.random() * 10);
@@ -28,9 +29,11 @@ class Main extends Component {
           description: "on vacation",
           imageLink: getRandomPic()
         }
-      ]
+      ],
+      screen: "photos" //phots, addPhoto
     };
     this.removePhoto = this.removePhoto.bind(this);
+    this.navigate = this.navigate.bind(this);
     console.log("constructor");
   }
 
@@ -54,12 +57,30 @@ class Main extends Component {
     //console.log(this.state);
   }
 
+  navigate() {
+    this.setState({ screen: "addPhoto" });
+    //console.log("navigate");
+  }
+
   render() {
     console.log("render");
     return (
       <div>
-        <Title text={"Photowall"} />
-        <Photowall posts={this.state.posts} onRemovePhoto={this.removePhoto} />
+        {this.state.screen === "photos" && (
+          <div>
+            <Title text={"Photowall"} />
+            <Photowall
+              posts={this.state.posts}
+              onRemovePhoto={this.removePhoto}
+              onNavigate={this.navigate}
+            />
+          </div>
+        )}
+        {this.state.screen === "addPhoto" && (
+          <div>
+            <AddPhoto />
+          </div>
+        )}
       </div>
     );
   }
