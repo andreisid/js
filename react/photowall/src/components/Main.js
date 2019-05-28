@@ -31,6 +31,17 @@ class Main extends Component {
       ]
     };
     this.removePhoto = this.removePhoto.bind(this);
+    console.log("constructor");
+  }
+
+  componentDidMount() {
+    console.log("componentDidMount");
+  }
+
+  //saves the state before the update
+  componentDidUpdate(prevProps, prevState) {
+    console.log("componentDidUpdate");
+    console.log(prevState.posts);
   }
 
   removePhoto(postRemoved) {
@@ -44,6 +55,7 @@ class Main extends Component {
   }
 
   render() {
+    console.log("render");
     return (
       <div>
         <Title text={"Photowall"} />
