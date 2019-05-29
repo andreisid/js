@@ -58,6 +58,12 @@ class Main extends Component {
     //console.log(this.state);
   }
 
+  addPhoto(postSubmitted) {
+    this.setState(state => ({
+      posts: state.posts.concat([postSubmitted])
+    }));
+  }
+
   navigate() {
     this.setState({ screen: "addPhoto" });
     //console.log("navigate");
@@ -82,7 +88,17 @@ class Main extends Component {
           )}
         />
         {/* <Route path="/AddPhoto" render={() => <AddPhoto />} /> */}
-        <Route path="/AddPhoto" component={AddPhoto} />
+        <Route
+          path="/AddPhoto"
+          render={history => (
+            <AddPhoto
+              onAddPhoto={addedPost => {
+                this.addPhoto(addedPost);
+                this.props.history.push("/");
+              }}
+            />
+          )}
+        />
       </div>
     );
   }
