@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Title from "./Title";
 import Photowall from "./PhotoWall";
 import AddPhoto from "./AddPhoto";
+import { Route } from "react-router-dom";
 
 function getRandomPic() {
   const rand = Math.floor(Math.random() * 10);
@@ -34,17 +35,17 @@ class Main extends Component {
     };
     this.removePhoto = this.removePhoto.bind(this);
     this.navigate = this.navigate.bind(this);
-    console.log("constructor");
+    //console.log("constructor");
   }
 
   componentDidMount() {
-    console.log("componentDidMount");
+    //console.log("componentDidMount");
   }
 
   //saves the state before the update
   componentDidUpdate(prevProps, prevState) {
-    console.log("componentDidUpdate");
-    console.log(prevState.posts);
+    //console.log("componentDidUpdate");
+    //console.log(prevState.posts);
   }
 
   removePhoto(postRemoved) {
@@ -63,24 +64,25 @@ class Main extends Component {
   }
 
   render() {
-    console.log("render");
+    //console.log("render");
     return (
       <div>
-        {this.state.screen === "photos" && (
-          <div>
-            <Title text={"Photowall"} />
-            <Photowall
-              posts={this.state.posts}
-              onRemovePhoto={this.removePhoto}
-              onNavigate={this.navigate}
-            />
-          </div>
-        )}
-        {this.state.screen === "addPhoto" && (
-          <div>
-            <AddPhoto />
-          </div>
-        )}
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <div>
+              <Title text={"Photowall"} />
+              <Photowall
+                posts={this.state.posts}
+                onRemovePhoto={this.removePhoto}
+                onNavigate={this.navigate}
+              />
+            </div>
+          )}
+        />
+        {/* <Route path="/AddPhoto" render={() => <AddPhoto />} /> */}
+        <Route path="/AddPhoto" component={AddPhoto} />
       </div>
     );
   }
