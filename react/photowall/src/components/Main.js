@@ -62,6 +62,7 @@ class Main extends Component {
     this.setState(state => ({
       posts: state.posts.concat([postSubmitted])
     }));
+    setTimeout(console.log(this.state), 3000);
   }
 
   navigate() {
@@ -90,11 +91,11 @@ class Main extends Component {
         {/* <Route path="/AddPhoto" render={() => <AddPhoto />} /> */}
         <Route
           path="/AddPhoto"
-          render={history => (
+          render={({ history }) => (
             <AddPhoto
               onAddPhoto={addedPost => {
                 this.addPhoto(addedPost);
-                this.props.history.push("/");
+                history.push("/");
               }}
             />
           )}
